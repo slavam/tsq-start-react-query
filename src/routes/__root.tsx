@@ -108,14 +108,14 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           >
             Users
           </Link>{' '}
-          {/* <Link
+          <Link
             to="/stations"
             activeProps={{
               className: 'font-bold',
             }}
           >
             Stations
-          </Link>{' '} */}
+          </Link>{' '}
           <Link
             to="/route-a"
             activeProps={{

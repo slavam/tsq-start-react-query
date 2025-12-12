@@ -1,4 +1,4 @@
-import { useSuspenseQuery } from '@tanstack/react-query'
+import { dataTagErrorSymbol, useSuspenseQuery } from '@tanstack/react-query'
 import { Link, Outlet, createFileRoute } from '@tanstack/react-router'
 import { stationsQueryOptions } from '../utils/stations'
 
@@ -10,13 +10,13 @@ export const Route = createFileRoute('/stations')({
 })
 
 function StationsComponent() {
-  const usersQuery = useSuspenseQuery(stationsQueryOptions())
-
+  const stationsQuery = useSuspenseQuery(stationsQueryOptions())
+  console.log(stationsQuery.data)
   return (
     <div className="p-2 flex gap-2">
       <ul className="list-disc pl-4">
         {[
-          ...usersQuery.data,
+          ...stationsQuery.data,
           { index: 'i-do-not-exist', name: 'Non-existent Station' },
         ].map((station) => {
           return (
