@@ -114,7 +114,15 @@ function RootDocument({ children }: { children: React.ReactNode }) {
               className: 'font-bold',
             }}
           >
-            Stations
+            Станции/посты
+          </Link>{' '}
+          <Link
+            to="/currentWeather"
+            activeProps={{
+              className: 'font-bold',
+            }}
+          >
+            Текущая погода
           </Link>{' '}
           <Link
             to="/route-a"

@@ -15,6 +15,7 @@ import { Route as PathlessLayoutRouteImport } from './routes/_pathlessLayout'
 import { Route as UsersRouteRouteImport } from './routes/users.route'
 import { Route as StationsRouteRouteImport } from './routes/stations.route'
 import { Route as PostsRouteRouteImport } from './routes/posts.route'
+import { Route as CurrentWeatherRouteRouteImport } from './routes/currentWeather.route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as UsersIndexRouteImport } from './routes/users.index'
 import { Route as StationsIndexRouteImport } from './routes/stations.index'
@@ -23,6 +24,7 @@ import { Route as UsersUserIdRouteImport } from './routes/users.$userId'
 import { Route as PostsPostIdRouteImport } from './routes/posts.$postId'
 import { Route as ApiUsersRouteImport } from './routes/api/users'
 import { Route as ApiStationsRouteImport } from './routes/api/stations'
+import { Route as ApiCurrentWeatherRouteImport } from './routes/api/currentWeather'
 import { Route as PathlessLayoutNestedLayoutRouteImport } from './routes/_pathlessLayout/_nested-layout'
 import { Route as PostsPostIdDeepRouteImport } from './routes/posts_.$postId.deep'
 import { Route as ApiUsersIdRouteImport } from './routes/api/users.$id'
@@ -56,6 +58,11 @@ const StationsRouteRoute = StationsRouteRouteImport.update({
 const PostsRouteRoute = PostsRouteRouteImport.update({
   id: '/posts',
   path: '/posts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CurrentWeatherRouteRoute = CurrentWeatherRouteRouteImport.update({
+  id: '/currentWeather',
+  path: '/currentWeather',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -98,6 +105,11 @@ const ApiStationsRoute = ApiStationsRouteImport.update({
   path: '/api/stations',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiCurrentWeatherRoute = ApiCurrentWeatherRouteImport.update({
+  id: '/api/currentWeather',
+  path: '/api/currentWeather',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PathlessLayoutNestedLayoutRoute =
   PathlessLayoutNestedLayoutRouteImport.update({
     id: '/_nested-layout',
@@ -128,11 +140,13 @@ const PathlessLayoutNestedLayoutRouteARoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/currentWeather': typeof CurrentWeatherRouteRoute
   '/posts': typeof PostsRouteRouteWithChildren
   '/stations': typeof StationsRouteRouteWithChildren
   '/users': typeof UsersRouteRouteWithChildren
   '/deferred': typeof DeferredRoute
   '/redirect': typeof RedirectRoute
+  '/api/currentWeather': typeof ApiCurrentWeatherRoute
   '/api/stations': typeof ApiStationsRoute
   '/api/users': typeof ApiUsersRouteWithChildren
   '/posts/$postId': typeof PostsPostIdRoute
@@ -147,8 +161,10 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/currentWeather': typeof CurrentWeatherRouteRoute
   '/deferred': typeof DeferredRoute
   '/redirect': typeof RedirectRoute
+  '/api/currentWeather': typeof ApiCurrentWeatherRoute
   '/api/stations': typeof ApiStationsRoute
   '/api/users': typeof ApiUsersRouteWithChildren
   '/posts/$postId': typeof PostsPostIdRoute
@@ -164,6 +180,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/currentWeather': typeof CurrentWeatherRouteRoute
   '/posts': typeof PostsRouteRouteWithChildren
   '/stations': typeof StationsRouteRouteWithChildren
   '/users': typeof UsersRouteRouteWithChildren
@@ -171,6 +188,7 @@ export interface FileRoutesById {
   '/deferred': typeof DeferredRoute
   '/redirect': typeof RedirectRoute
   '/_pathlessLayout/_nested-layout': typeof PathlessLayoutNestedLayoutRouteWithChildren
+  '/api/currentWeather': typeof ApiCurrentWeatherRoute
   '/api/stations': typeof ApiStationsRoute
   '/api/users': typeof ApiUsersRouteWithChildren
   '/posts/$postId': typeof PostsPostIdRoute
@@ -187,11 +205,13 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/currentWeather'
     | '/posts'
     | '/stations'
     | '/users'
     | '/deferred'
     | '/redirect'
+    | '/api/currentWeather'
     | '/api/stations'
     | '/api/users'
     | '/posts/$postId'
@@ -206,8 +226,10 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/currentWeather'
     | '/deferred'
     | '/redirect'
+    | '/api/currentWeather'
     | '/api/stations'
     | '/api/users'
     | '/posts/$postId'
@@ -222,6 +244,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/currentWeather'
     | '/posts'
     | '/stations'
     | '/users'
@@ -229,6 +252,7 @@ export interface FileRouteTypes {
     | '/deferred'
     | '/redirect'
     | '/_pathlessLayout/_nested-layout'
+    | '/api/currentWeather'
     | '/api/stations'
     | '/api/users'
     | '/posts/$postId'
@@ -244,12 +268,14 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CurrentWeatherRouteRoute: typeof CurrentWeatherRouteRoute
   PostsRouteRoute: typeof PostsRouteRouteWithChildren
   StationsRouteRoute: typeof StationsRouteRouteWithChildren
   UsersRouteRoute: typeof UsersRouteRouteWithChildren
   PathlessLayoutRoute: typeof PathlessLayoutRouteWithChildren
   DeferredRoute: typeof DeferredRoute
   RedirectRoute: typeof RedirectRoute
+  ApiCurrentWeatherRoute: typeof ApiCurrentWeatherRoute
   ApiStationsRoute: typeof ApiStationsRoute
   ApiUsersRoute: typeof ApiUsersRouteWithChildren
   PostsPostIdDeepRoute: typeof PostsPostIdDeepRoute
@@ -297,6 +323,13 @@ declare module '@tanstack/react-router' {
       path: '/posts'
       fullPath: '/posts'
       preLoaderRoute: typeof PostsRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/currentWeather': {
+      id: '/currentWeather'
+      path: '/currentWeather'
+      fullPath: '/currentWeather'
+      preLoaderRoute: typeof CurrentWeatherRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -353,6 +386,13 @@ declare module '@tanstack/react-router' {
       path: '/api/stations'
       fullPath: '/api/stations'
       preLoaderRoute: typeof ApiStationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/currentWeather': {
+      id: '/api/currentWeather'
+      path: '/api/currentWeather'
+      fullPath: '/api/currentWeather'
+      preLoaderRoute: typeof ApiCurrentWeatherRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_pathlessLayout/_nested-layout': {
@@ -477,12 +517,14 @@ const ApiUsersRouteWithChildren = ApiUsersRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CurrentWeatherRouteRoute: CurrentWeatherRouteRoute,
   PostsRouteRoute: PostsRouteRouteWithChildren,
   StationsRouteRoute: StationsRouteRouteWithChildren,
   UsersRouteRoute: UsersRouteRouteWithChildren,
   PathlessLayoutRoute: PathlessLayoutRouteWithChildren,
   DeferredRoute: DeferredRoute,
   RedirectRoute: RedirectRoute,
+  ApiCurrentWeatherRoute: ApiCurrentWeatherRoute,
   ApiStationsRoute: ApiStationsRoute,
   ApiUsersRoute: ApiUsersRouteWithChildren,
   PostsPostIdDeepRoute: PostsPostIdDeepRoute,
