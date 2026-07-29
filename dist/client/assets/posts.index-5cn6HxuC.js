@@ -1,0 +1,1 @@
+import{j as e}from"./index-f3GPrvdG.js";function t(){return e.jsxDEV("div",{children:"Select a post."},void 0,!1,{fileName:"/home/slavam22/sites/start-basic-react-query/src/routes/posts.index.tsx?tsr-split=component",lineNumber:2,columnNumber:10},this)}export{t as component};

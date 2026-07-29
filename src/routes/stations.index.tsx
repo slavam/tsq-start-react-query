@@ -4,5 +4,5 @@ export const Route = createFileRoute('/stations/')({
 })
 
 function StationsIndexComponent() {
-    return <div>Select a station.</div>
+    // return null //<div>Select a station.</div>
 }

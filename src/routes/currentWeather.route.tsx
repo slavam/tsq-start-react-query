@@ -33,14 +33,16 @@ function RouteComponent() {
           break
         case -996973625:
           humidity = data.value
+          break
       }
     }
     )
   return (
-    <div className="p-2 flex gap-2">
-
+    <div className="p-2 flex gap-2 ">
+      <h1>Текущая погода по состоянию на {new Date().toLocaleString("ru")} </h1>
+      <hr />
       <div className='font-bold text-lg'>
-        <ul className="list-disc pl-4">
+        <ul className="list-disc pl-4" >
           <li key='1' className="whitespace-nowrap">
             Температура: {temperature}°C
           </li>

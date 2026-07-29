@@ -1,11 +1,14 @@
 {
-  "files.watcherExclude": {
-    "**/routeTree.gen.ts": true
+  "playwright.env": {
+    "NODE_ENV": "test"
   },
-  "search.exclude": {
-    "**/routeTree.gen.ts": true
+  "playwright.reuseBrowser": false,
+  "playwright.showTrace": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
   },
-  "files.readonlyInclude": {
-    "**/routeTree.gen.ts": true
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }

@@ -1,0 +1,19 @@
+{
+    "Playwright Test Block": {
+        "prefix": "pwtest",
+        "body": [
+            "test('${1:test description}', async ({ page }) => {",
+            "  await page.goto('/');",
+            "  ${2:// test code}",
+            "});"
+        ]
+    },
+    "Playwright describe block": {
+        "prefix": "pwdescribe",
+        "body": [
+            "test.describe('${1:group name}', () => {",
+            "  ${2:// tests}",
+            "});"
+        ]
+    }
+}

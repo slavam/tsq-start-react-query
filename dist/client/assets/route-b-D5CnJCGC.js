@@ -1,0 +1,1 @@
+import{j as t}from"./index-f3GPrvdG.js";function s(){return t.jsxDEV("div",{children:"I'm B!"},void 0,!1,{fileName:"/home/slavam22/sites/start-basic-react-query/src/routes/_pathlessLayout/_nested-layout/route-b.tsx?tsr-split=component",lineNumber:2,columnNumber:10},this)}export{s as component};
