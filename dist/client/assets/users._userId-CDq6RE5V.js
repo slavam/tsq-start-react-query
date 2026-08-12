@@ -1,1 +1,0 @@
-import{j as o,N as e}from"./index-f3GPrvdG.js";const n=()=>o.jsxDEV(e,{children:"User not found"},void 0,!1,{fileName:"/home/slavam22/sites/start-basic-react-query/src/routes/users.$userId.tsx?tsr-split=notFoundComponent",lineNumber:3,columnNumber:10},void 0);export{n as notFoundComponent};

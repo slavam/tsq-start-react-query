@@ -1,0 +1,1 @@
+import{e as a,u as n,f as t,j as s}from"./index-D4q2KT_g.js";function m(){const r=a.useParams(),e=n(t(r.userId)).data;return s.jsxs("div",{className:"space-y-2",children:[s.jsx("h4",{className:"text-xl font-bold underline",children:e.name}),s.jsx("div",{className:"text-sm",children:e.email})]})}export{m as component};

@@ -5,7 +5,7 @@
   "playwright.reuseBrowser": false,
   "playwright.showTrace": false,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "typescript.preferences.importModuleSpecifier": "relative",
   "[typescript]": {

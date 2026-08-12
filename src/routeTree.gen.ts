@@ -9,55 +9,36 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as RedirectRouteImport } from './routes/redirect'
-import { Route as DeferredRouteImport } from './routes/deferred'
-import { Route as PathlessLayoutRouteImport } from './routes/_pathlessLayout'
-import { Route as UsersRouteRouteImport } from './routes/users.route'
-import { Route as StationsRouteRouteImport } from './routes/stations.route'
-import { Route as PostsRouteRouteImport } from './routes/posts.route'
-import { Route as CurrentWeatherRouteRouteImport } from './routes/currentWeather.route'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as UsersIndexRouteImport } from './routes/users.index'
-import { Route as StationsIndexRouteImport } from './routes/stations.index'
-import { Route as PostsIndexRouteImport } from './routes/posts.index'
-import { Route as UsersUserIdRouteImport } from './routes/users.$userId'
-import { Route as PostsPostIdRouteImport } from './routes/posts.$postId'
-import { Route as ApiUsersRouteImport } from './routes/api/users'
-import { Route as ApiStationsRouteImport } from './routes/api/stations'
-import { Route as ApiCurrentWeatherRouteImport } from './routes/api/currentWeather'
+import { Route as PathlessLayoutRouteImport } from './routes/_pathlessLayout'
+import { Route as CurrentWeatherRouteRouteImport } from './routes/currentWeather.route'
+import { Route as DeferredRouteImport } from './routes/deferred'
+import { Route as PostsRouteRouteImport } from './routes/posts.route'
+import { Route as RedirectRouteImport } from './routes/redirect'
+import { Route as StationsRouteRouteImport } from './routes/stations.route'
+import { Route as UsersRouteRouteImport } from './routes/users.route'
 import { Route as PathlessLayoutNestedLayoutRouteImport } from './routes/_pathlessLayout/_nested-layout'
-import { Route as PostsPostIdDeepRouteImport } from './routes/posts_.$postId.deep'
-import { Route as ApiUsersIdRouteImport } from './routes/api/users.$id'
-import { Route as PathlessLayoutNestedLayoutRouteBRouteImport } from './routes/_pathlessLayout/_nested-layout/route-b'
+import { Route as ApiCurrentWeatherRouteImport } from './routes/api/currentWeather'
+import { Route as ApiStationsRouteImport } from './routes/api/stations'
+import { Route as ApiUsersRouteImport } from './routes/api/users'
+import { Route as ForecastWeatherApiIndexRouteImport } from './routes/forecastWeatherApi.index'
+import { Route as PostsIndexRouteImport } from './routes/posts.index'
+import { Route as PostsPostIdRouteImport } from './routes/posts.$postId'
+import { Route as StationsIndexRouteImport } from './routes/stations.index'
+import { Route as UsersIndexRouteImport } from './routes/users.index'
+import { Route as UsersUserIdRouteImport } from './routes/users.$userId'
 import { Route as PathlessLayoutNestedLayoutRouteARouteImport } from './routes/_pathlessLayout/_nested-layout/route-a'
+import { Route as PathlessLayoutNestedLayoutRouteBRouteImport } from './routes/_pathlessLayout/_nested-layout/route-b'
+import { Route as ApiUsersIdRouteImport } from './routes/api/users.$id'
+import { Route as PostsPostIdDeepRouteImport } from './routes/posts_.$postId.deep'
 
-const RedirectRoute = RedirectRouteImport.update({
-  id: '/redirect',
-  path: '/redirect',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DeferredRoute = DeferredRouteImport.update({
-  id: '/deferred',
-  path: '/deferred',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PathlessLayoutRoute = PathlessLayoutRouteImport.update({
   id: '/_pathlessLayout',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const UsersRouteRoute = UsersRouteRouteImport.update({
-  id: '/users',
-  path: '/users',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const StationsRouteRoute = StationsRouteRouteImport.update({
-  id: '/stations',
-  path: '/stations',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PostsRouteRoute = PostsRouteRouteImport.update({
-  id: '/posts',
-  path: '/posts',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CurrentWeatherRouteRoute = CurrentWeatherRouteRouteImport.update({
@@ -65,49 +46,29 @@ const CurrentWeatherRouteRoute = CurrentWeatherRouteRouteImport.update({
   path: '/currentWeather',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const DeferredRoute = DeferredRouteImport.update({
+  id: '/deferred',
+  path: '/deferred',
   getParentRoute: () => rootRouteImport,
 } as any)
-const UsersIndexRoute = UsersIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => UsersRouteRoute,
-} as any)
-const StationsIndexRoute = StationsIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => StationsRouteRoute,
-} as any)
-const PostsIndexRoute = PostsIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => PostsRouteRoute,
-} as any)
-const UsersUserIdRoute = UsersUserIdRouteImport.update({
-  id: '/$userId',
-  path: '/$userId',
-  getParentRoute: () => UsersRouteRoute,
-} as any)
-const PostsPostIdRoute = PostsPostIdRouteImport.update({
-  id: '/$postId',
-  path: '/$postId',
-  getParentRoute: () => PostsRouteRoute,
-} as any)
-const ApiUsersRoute = ApiUsersRouteImport.update({
-  id: '/api/users',
-  path: '/api/users',
+const PostsRouteRoute = PostsRouteRouteImport.update({
+  id: '/posts',
+  path: '/posts',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiStationsRoute = ApiStationsRouteImport.update({
-  id: '/api/stations',
-  path: '/api/stations',
+const RedirectRoute = RedirectRouteImport.update({
+  id: '/redirect',
+  path: '/redirect',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiCurrentWeatherRoute = ApiCurrentWeatherRouteImport.update({
-  id: '/api/currentWeather',
-  path: '/api/currentWeather',
+const StationsRouteRoute = StationsRouteRouteImport.update({
+  id: '/stations',
+  path: '/stations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UsersRouteRoute = UsersRouteRouteImport.update({
+  id: '/users',
+  path: '/users',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PathlessLayoutNestedLayoutRoute =
@@ -115,28 +76,73 @@ const PathlessLayoutNestedLayoutRoute =
     id: '/_nested-layout',
     getParentRoute: () => PathlessLayoutRoute,
   } as any)
-const PostsPostIdDeepRoute = PostsPostIdDeepRouteImport.update({
-  id: '/posts_/$postId/deep',
-  path: '/posts/$postId/deep',
+const ApiCurrentWeatherRoute = ApiCurrentWeatherRouteImport.update({
+  id: '/api/currentWeather',
+  path: '/api/currentWeather',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiUsersIdRoute = ApiUsersIdRouteImport.update({
-  id: '/$id',
-  path: '/$id',
-  getParentRoute: () => ApiUsersRoute,
+const ApiStationsRoute = ApiStationsRouteImport.update({
+  id: '/api/stations',
+  path: '/api/stations',
+  getParentRoute: () => rootRouteImport,
 } as any)
-const PathlessLayoutNestedLayoutRouteBRoute =
-  PathlessLayoutNestedLayoutRouteBRouteImport.update({
-    id: '/route-b',
-    path: '/route-b',
-    getParentRoute: () => PathlessLayoutNestedLayoutRoute,
-  } as any)
+const ApiUsersRoute = ApiUsersRouteImport.update({
+  id: '/api/users',
+  path: '/api/users',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForecastWeatherApiIndexRoute = ForecastWeatherApiIndexRouteImport.update({
+  id: '/forecastWeatherApi/',
+  path: '/forecastWeatherApi/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PostsIndexRoute = PostsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => PostsRouteRoute,
+} as any)
+const PostsPostIdRoute = PostsPostIdRouteImport.update({
+  id: '/$postId',
+  path: '/$postId',
+  getParentRoute: () => PostsRouteRoute,
+} as any)
+const StationsIndexRoute = StationsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => StationsRouteRoute,
+} as any)
+const UsersIndexRoute = UsersIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => UsersRouteRoute,
+} as any)
+const UsersUserIdRoute = UsersUserIdRouteImport.update({
+  id: '/$userId',
+  path: '/$userId',
+  getParentRoute: () => UsersRouteRoute,
+} as any)
 const PathlessLayoutNestedLayoutRouteARoute =
   PathlessLayoutNestedLayoutRouteARouteImport.update({
     id: '/route-a',
     path: '/route-a',
     getParentRoute: () => PathlessLayoutNestedLayoutRoute,
   } as any)
+const PathlessLayoutNestedLayoutRouteBRoute =
+  PathlessLayoutNestedLayoutRouteBRouteImport.update({
+    id: '/route-b',
+    path: '/route-b',
+    getParentRoute: () => PathlessLayoutNestedLayoutRoute,
+  } as any)
+const ApiUsersIdRoute = ApiUsersIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => ApiUsersRoute,
+} as any)
+const PostsPostIdDeepRoute = PostsPostIdDeepRouteImport.update({
+  id: '/posts_/$postId/deep',
+  path: '/posts/$postId/deep',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -151,6 +157,7 @@ export interface FileRoutesByFullPath {
   '/api/users': typeof ApiUsersRouteWithChildren
   '/posts/$postId': typeof PostsPostIdRoute
   '/users/$userId': typeof UsersUserIdRoute
+  '/forecastWeatherApi/': typeof ForecastWeatherApiIndexRoute
   '/posts/': typeof PostsIndexRoute
   '/stations/': typeof StationsIndexRoute
   '/users/': typeof UsersIndexRoute
@@ -169,6 +176,7 @@ export interface FileRoutesByTo {
   '/api/users': typeof ApiUsersRouteWithChildren
   '/posts/$postId': typeof PostsPostIdRoute
   '/users/$userId': typeof UsersUserIdRoute
+  '/forecastWeatherApi': typeof ForecastWeatherApiIndexRoute
   '/posts': typeof PostsIndexRoute
   '/stations': typeof StationsIndexRoute
   '/users': typeof UsersIndexRoute
@@ -193,6 +201,7 @@ export interface FileRoutesById {
   '/api/users': typeof ApiUsersRouteWithChildren
   '/posts/$postId': typeof PostsPostIdRoute
   '/users/$userId': typeof UsersUserIdRoute
+  '/forecastWeatherApi/': typeof ForecastWeatherApiIndexRoute
   '/posts/': typeof PostsIndexRoute
   '/stations/': typeof StationsIndexRoute
   '/users/': typeof UsersIndexRoute
@@ -216,6 +225,7 @@ export interface FileRouteTypes {
     | '/api/users'
     | '/posts/$postId'
     | '/users/$userId'
+    | '/forecastWeatherApi/'
     | '/posts/'
     | '/stations/'
     | '/users/'
@@ -234,6 +244,7 @@ export interface FileRouteTypes {
     | '/api/users'
     | '/posts/$postId'
     | '/users/$userId'
+    | '/forecastWeatherApi'
     | '/posts'
     | '/stations'
     | '/users'
@@ -257,6 +268,7 @@ export interface FileRouteTypes {
     | '/api/users'
     | '/posts/$postId'
     | '/users/$userId'
+    | '/forecastWeatherApi/'
     | '/posts/'
     | '/stations/'
     | '/users/'
@@ -278,23 +290,17 @@ export interface RootRouteChildren {
   ApiCurrentWeatherRoute: typeof ApiCurrentWeatherRoute
   ApiStationsRoute: typeof ApiStationsRoute
   ApiUsersRoute: typeof ApiUsersRouteWithChildren
+  ForecastWeatherApiIndexRoute: typeof ForecastWeatherApiIndexRoute
   PostsPostIdDeepRoute: typeof PostsPostIdDeepRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/redirect': {
-      id: '/redirect'
-      path: '/redirect'
-      fullPath: '/redirect'
-      preLoaderRoute: typeof RedirectRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/deferred': {
-      id: '/deferred'
-      path: '/deferred'
-      fullPath: '/deferred'
-      preLoaderRoute: typeof DeferredRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_pathlessLayout': {
@@ -304,18 +310,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PathlessLayoutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/users': {
-      id: '/users'
-      path: '/users'
-      fullPath: '/users'
-      preLoaderRoute: typeof UsersRouteRouteImport
+    '/currentWeather': {
+      id: '/currentWeather'
+      path: '/currentWeather'
+      fullPath: '/currentWeather'
+      preLoaderRoute: typeof CurrentWeatherRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/stations': {
-      id: '/stations'
-      path: '/stations'
-      fullPath: '/stations'
-      preLoaderRoute: typeof StationsRouteRouteImport
+    '/deferred': {
+      id: '/deferred'
+      path: '/deferred'
+      fullPath: '/deferred'
+      preLoaderRoute: typeof DeferredRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/posts': {
@@ -325,74 +331,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PostsRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/currentWeather': {
-      id: '/currentWeather'
-      path: '/currentWeather'
-      fullPath: '/currentWeather'
-      preLoaderRoute: typeof CurrentWeatherRouteRouteImport
+    '/redirect': {
+      id: '/redirect'
+      path: '/redirect'
+      fullPath: '/redirect'
+      preLoaderRoute: typeof RedirectRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/stations': {
+      id: '/stations'
+      path: '/stations'
+      fullPath: '/stations'
+      preLoaderRoute: typeof StationsRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/users/': {
-      id: '/users/'
-      path: '/'
-      fullPath: '/users/'
-      preLoaderRoute: typeof UsersIndexRouteImport
-      parentRoute: typeof UsersRouteRoute
-    }
-    '/stations/': {
-      id: '/stations/'
-      path: '/'
-      fullPath: '/stations/'
-      preLoaderRoute: typeof StationsIndexRouteImport
-      parentRoute: typeof StationsRouteRoute
-    }
-    '/posts/': {
-      id: '/posts/'
-      path: '/'
-      fullPath: '/posts/'
-      preLoaderRoute: typeof PostsIndexRouteImport
-      parentRoute: typeof PostsRouteRoute
-    }
-    '/users/$userId': {
-      id: '/users/$userId'
-      path: '/$userId'
-      fullPath: '/users/$userId'
-      preLoaderRoute: typeof UsersUserIdRouteImport
-      parentRoute: typeof UsersRouteRoute
-    }
-    '/posts/$postId': {
-      id: '/posts/$postId'
-      path: '/$postId'
-      fullPath: '/posts/$postId'
-      preLoaderRoute: typeof PostsPostIdRouteImport
-      parentRoute: typeof PostsRouteRoute
-    }
-    '/api/users': {
-      id: '/api/users'
-      path: '/api/users'
-      fullPath: '/api/users'
-      preLoaderRoute: typeof ApiUsersRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/stations': {
-      id: '/api/stations'
-      path: '/api/stations'
-      fullPath: '/api/stations'
-      preLoaderRoute: typeof ApiStationsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/currentWeather': {
-      id: '/api/currentWeather'
-      path: '/api/currentWeather'
-      fullPath: '/api/currentWeather'
-      preLoaderRoute: typeof ApiCurrentWeatherRouteImport
+    '/users': {
+      id: '/users'
+      path: '/users'
+      fullPath: '/users'
+      preLoaderRoute: typeof UsersRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_pathlessLayout/_nested-layout': {
@@ -402,19 +359,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PathlessLayoutNestedLayoutRouteImport
       parentRoute: typeof PathlessLayoutRoute
     }
-    '/posts_/$postId/deep': {
-      id: '/posts_/$postId/deep'
-      path: '/posts/$postId/deep'
-      fullPath: '/posts/$postId/deep'
-      preLoaderRoute: typeof PostsPostIdDeepRouteImport
+    '/api/currentWeather': {
+      id: '/api/currentWeather'
+      path: '/api/currentWeather'
+      fullPath: '/api/currentWeather'
+      preLoaderRoute: typeof ApiCurrentWeatherRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/users/$id': {
-      id: '/api/users/$id'
-      path: '/$id'
-      fullPath: '/api/users/$id'
-      preLoaderRoute: typeof ApiUsersIdRouteImport
-      parentRoute: typeof ApiUsersRoute
+    '/api/stations': {
+      id: '/api/stations'
+      path: '/api/stations'
+      fullPath: '/api/stations'
+      preLoaderRoute: typeof ApiStationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/users': {
+      id: '/api/users'
+      path: '/api/users'
+      fullPath: '/api/users'
+      preLoaderRoute: typeof ApiUsersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forecastWeatherApi/': {
+      id: '/forecastWeatherApi/'
+      path: '/forecastWeatherApi'
+      fullPath: '/forecastWeatherApi/'
+      preLoaderRoute: typeof ForecastWeatherApiIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/posts/': {
+      id: '/posts/'
+      path: '/'
+      fullPath: '/posts/'
+      preLoaderRoute: typeof PostsIndexRouteImport
+      parentRoute: typeof PostsRouteRoute
+    }
+    '/posts/$postId': {
+      id: '/posts/$postId'
+      path: '/$postId'
+      fullPath: '/posts/$postId'
+      preLoaderRoute: typeof PostsPostIdRouteImport
+      parentRoute: typeof PostsRouteRoute
+    }
+    '/stations/': {
+      id: '/stations/'
+      path: '/'
+      fullPath: '/stations/'
+      preLoaderRoute: typeof StationsIndexRouteImport
+      parentRoute: typeof StationsRouteRoute
+    }
+    '/users/': {
+      id: '/users/'
+      path: '/'
+      fullPath: '/users/'
+      preLoaderRoute: typeof UsersIndexRouteImport
+      parentRoute: typeof UsersRouteRoute
+    }
+    '/users/$userId': {
+      id: '/users/$userId'
+      path: '/$userId'
+      fullPath: '/users/$userId'
+      preLoaderRoute: typeof UsersUserIdRouteImport
+      parentRoute: typeof UsersRouteRoute
+    }
+    '/_pathlessLayout/_nested-layout/route-a': {
+      id: '/_pathlessLayout/_nested-layout/route-a'
+      path: '/route-a'
+      fullPath: '/route-a'
+      preLoaderRoute: typeof PathlessLayoutNestedLayoutRouteARouteImport
+      parentRoute: typeof PathlessLayoutNestedLayoutRoute
     }
     '/_pathlessLayout/_nested-layout/route-b': {
       id: '/_pathlessLayout/_nested-layout/route-b'
@@ -423,12 +436,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PathlessLayoutNestedLayoutRouteBRouteImport
       parentRoute: typeof PathlessLayoutNestedLayoutRoute
     }
-    '/_pathlessLayout/_nested-layout/route-a': {
-      id: '/_pathlessLayout/_nested-layout/route-a'
-      path: '/route-a'
-      fullPath: '/route-a'
-      preLoaderRoute: typeof PathlessLayoutNestedLayoutRouteARouteImport
-      parentRoute: typeof PathlessLayoutNestedLayoutRoute
+    '/api/users/$id': {
+      id: '/api/users/$id'
+      path: '/$id'
+      fullPath: '/api/users/$id'
+      preLoaderRoute: typeof ApiUsersIdRouteImport
+      parentRoute: typeof ApiUsersRoute
+    }
+    '/posts_/$postId/deep': {
+      id: '/posts_/$postId/deep'
+      path: '/posts/$postId/deep'
+      fullPath: '/posts/$postId/deep'
+      preLoaderRoute: typeof PostsPostIdDeepRouteImport
+      parentRoute: typeof rootRouteImport
     }
   }
 }
@@ -527,6 +547,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiCurrentWeatherRoute: ApiCurrentWeatherRoute,
   ApiStationsRoute: ApiStationsRoute,
   ApiUsersRoute: ApiUsersRouteWithChildren,
+  ForecastWeatherApiIndexRoute: ForecastWeatherApiIndexRoute,
   PostsPostIdDeepRoute: PostsPostIdDeepRoute,
 }
 export const routeTree = rootRouteImport

@@ -125,6 +125,14 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             Текущая погода
           </Link>{' '}
           <Link
+            to="/forecastWeatherApi"
+            activeProps={{
+              className: 'font-bold',
+            }}
+          >
+            Прогноз погоды от Weather API
+          </Link>{' '}
+          <Link
             to="/route-a"
             activeProps={{
               className: 'font-bold',

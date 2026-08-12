@@ -1,1 +1,0 @@
-import{j as o,N as t}from"./index-f3GPrvdG.js";const s=()=>o.jsxDEV(t,{children:"Post not found"},void 0,!1,{fileName:"/home/slavam22/sites/start-basic-react-query/src/routes/posts.$postId.tsx?tsr-split=notFoundComponent",lineNumber:3,columnNumber:10},void 0);export{s as notFoundComponent};
