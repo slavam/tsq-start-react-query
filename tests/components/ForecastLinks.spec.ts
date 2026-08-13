@@ -4,7 +4,7 @@ test.describe('ForecastLinks Component', () => {
   test.beforeEach(async ({ page }) => {
     // Переходим на страницу, где находится компонент ForecastLinks
     // Предполагаем, что компонент находится на странице /forecastWeatherApi
-    await page.goto('/forecastWeatherApi');
+    await page.goto('http://localhost:3000/forecastWeatherApi');
   });
 
   test('should display all three forecast links', async ({ page }) => {
@@ -29,7 +29,7 @@ test.describe('ForecastLinks Component', () => {
   });
 
   test('should have correct CSS classes for tomorrow link', async ({ page }) => {
-    const tomorrowLink = page.getByRole('link', { name: 'Завтра' });
+    const tomorrowLink = page.getByRole('link', { name: 'Завтра', exact: true });
     
     await expect(tomorrowLink).toHaveClass(/bg-yellow-500/);
     await expect(tomorrowLink).toHaveClass(/text-white/);
@@ -39,7 +39,7 @@ test.describe('ForecastLinks Component', () => {
   });
 
   test('should have correct CSS classes for day after tomorrow link', async ({ page }) => {
-    const dayAfterTomorrowLink = page.getByRole('link', { name: 'Послезавтра' });
+    const dayAfterTomorrowLink = page.getByRole('link', { name: 'Послезавтра', exact: true });
     
     await expect(dayAfterTomorrowLink).toHaveClass(/bg-purple-500/);
     await expect(dayAfterTomorrowLink).toHaveClass(/text-white/);
@@ -60,7 +60,7 @@ test.describe('ForecastLinks Component', () => {
   });
 
   test('should navigate to correct URL with search param i_day=1 when clicking tomorrow', async ({ page }) => {
-    const tomorrowLink = page.getByRole('link', { name: 'Завтра' });
+    const tomorrowLink = page.getByRole('link', { name: 'Завтра', exact: true });
     
     await expect(tomorrowLink).toHaveAttribute('href', '/forecastWeatherApi?i_day=1');
     
@@ -69,7 +69,7 @@ test.describe('ForecastLinks Component', () => {
   });
 
   test('should navigate to correct URL with search param i_day=2 when clicking day after tomorrow', async ({ page }) => {
-    const dayAfterTomorrowLink = page.getByRole('link', { name: 'Послезавтра' });
+    const dayAfterTomorrowLink = page.getByRole('link', { name: 'Послезавтра', exact: true });
     
     await expect(dayAfterTomorrowLink).toHaveAttribute('href', '/forecastWeatherApi?i_day=2');
     
@@ -108,8 +108,8 @@ test.describe('ForecastLinks Component', () => {
 
   test('should have correct text content for all links', async ({ page }) => {
     const todayLink = page.getByRole('link', { name: 'Сегодня' });
-    const tomorrowLink = page.getByRole('link', { name: 'Завтра' });
-    const dayAfterTomorrowLink = page.getByRole('link', { name: 'Послезавтра' });
+    const tomorrowLink = page.getByRole('link', { name: 'Завтра', exact: true });
+    const dayAfterTomorrowLink = page.getByRole('link', { name: 'Послезавтра', exact: true });
     
     await expect(todayLink).toHaveText('Сегодня');
     await expect(tomorrowLink).toHaveText('Завтра');
@@ -117,22 +117,26 @@ test.describe('ForecastLinks Component', () => {
   });
 
   test('should have padding and styling applied to all links', async ({ page }) => {
-    const links = page.locator('a');
-    
-    // Проверяем, что у всех ссылок есть padding и другие стили
-    for (let i = 0; i < await links.count(); i++) {
-      const link = links.nth(i);
-      await expect(link).toHaveClass(/px-4/);
-      await expect(link).toHaveClass(/py-2/);
-      await expect(link).toHaveClass(/text-white/);
-      await expect(link).toHaveClass(/rounded/);
-      await expect(link).toHaveClass(/transition-colors/);
-    }
-  });
+  // Получаем каждую ссылку по точному тексту
+  const links = [
+    page.getByRole('link', { name: 'Сегодня', exact: true }),
+    page.getByRole('link', { name: 'Завтра', exact: true }),
+    page.getByRole('link', { name: 'Послезавтра', exact: true })
+  ];
+  
+  // Проверяем каждую ссылку
+  for (const link of links) {
+    await expect(link).toHaveClass(/px-4/);
+    await expect(link).toHaveClass(/py-2/);
+    await expect(link).toHaveClass(/text-white/);
+    await expect(link).toHaveClass(/rounded/);
+    await expect(link).toHaveClass(/transition-colors/);
+  }
+})
 
   test('should maintain search parameters when navigating between days', async ({ page }) => {
     // Кликаем на "Завтра"
-    await page.getByRole('link', { name: 'Завтра' }).click();
+    await page.getByRole('link', { name: 'Завтра', exact: true }).click();
     await expect(page).toHaveURL(/.*forecastWeatherApi\?i_day=1/);
     
     // Затем кликаем на "Сегодня"
@@ -140,7 +144,7 @@ test.describe('ForecastLinks Component', () => {
     await expect(page).toHaveURL(/.*forecastWeatherApi\?i_day=0/);
     
     // Затем кликаем на "Послезавтра"
-    await page.getByRole('link', { name: 'Послезавтра' }).click();
+    await page.getByRole('link', { name: 'Послезавтра', exact: true }).click();
     await expect(page).toHaveURL(/.*forecastWeatherApi\?i_day=2/);
   });
 });
