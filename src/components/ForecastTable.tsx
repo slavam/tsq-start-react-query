@@ -20,7 +20,7 @@ export default function ForecastTable({ forecastData, iDay }: ForecastTableProps
   const maxWind = (todayForecast.maxwind_kph * 1000 / 3600).toFixed(1);
 
   // 🕐 Текущий час
-  const currentHour = new Date().getHours();
+  const currentHour = iDay === 0 ? new Date().getHours() : 0;
 
   // 📋 Формируем данные по часам (с текущего часа)
   const hours = [];
@@ -40,7 +40,10 @@ export default function ForecastTable({ forecastData, iDay }: ForecastTableProps
   return (
     <div className="space-y-4">
       {/* 📊 Дневной прогноз */}
-      <table className="w-full table-auto border-collapse text-sm">
+      <table
+        className="w-full table-auto border-collapse text-sm"
+        data-testid="daily-forecast-table"
+      >
         <thead>
           <tr className="bg-gray-700 text-white" style={{ height: '80px' }}>
             <th className="p-2" style={{ width: '150px' }}>
@@ -75,8 +78,11 @@ export default function ForecastTable({ forecastData, iDay }: ForecastTableProps
       {/* ⏰ Почасовой прогноз */}
       <h2 className="text-2xl font-bold">Почасовой прогноз</h2>
 
-      <div className="overflow-x-auto">
-        <table className="w-full table-auto border-collapse text-sm">
+      <div className="overflow-x-auto" data-testid="hourly-forecast-container">
+        <table
+          className="w-full table-auto border-collapse text-sm"
+          data-testid="hourly-forecast-table"
+        >
           <thead>
             {/* Заголовки часов */}
             <tr className="bg-gray-600 text-white">
