@@ -1,6 +1,4 @@
 // // 👇 Экспорт по умолчанию
-// export default forecastRoute;
-// forecastWeatherApi.tsx
 import { createRoute, lazyRouteComponent } from '@tanstack/react-router';
 import { Route as rootRoute } from '../routes/__root';
 import { z } from 'zod';
@@ -29,8 +27,6 @@ const forecastRoute = createRoute({
 
     return {};
   },
-  // component: () => <ForecastPage />, // 👈 Используем компонент напрямую
-  // или если хотите lazy:
   component: lazyRouteComponent(() => import('./forecastWeatherApi.index'), 'ForecastPage'),
 })
 

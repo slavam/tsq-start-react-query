@@ -348,32 +348,6 @@ test.describe('API Error Recovery', () => {
 });
 
   test.describe('Navigation and Routing', () => {
-    // test('should navigate to station detail via click', async ({ page }) => {
-    //     await page.goto('/stations');
-    //     await page.waitForSelector('ul.list-disc li', { timeout: 10000 });
-        
-    //     // Получаем ID первой станции из списка
-    //     const firstStationDiv = page.locator('ul.list-disc li').first().locator('div');
-    //     const stationText = await firstStationDiv.textContent();
-    //     const stationId = stationText?.match(/^(\d+)/)?.[0];
-        
-    //     // Получаем URL до клика
-    //     const initialUrl = page.url();
-        
-    //     // Кликаем на первую станцию
-    //     const firstStation = page.locator('ul.list-disc li').first();
-    //     await firstStation.click();
-        
-    //     // Проверяем, что URL изменился
-    //     if (stationId) {
-    //     await expect(page).toHaveURL(new RegExp(`.*/stations/${stationId}`));
-    //     } else {
-    //     // Если не изменился, проверяем что Outlet обновился
-    //     const outlet = page.locator('hr + div');
-    //     await expect(outlet).toBeVisible();
-    //     await expect(outlet).not.toBeEmpty();
-    //     }
-    // });
 
   test('should update Outlet when station is selected', async ({ page }) => {
     await page.goto('/stations');
@@ -398,64 +372,6 @@ test.describe('API Error Recovery', () => {
     // Проверяем, что в Outlet есть контент
     expect(updatedContent?.trim()).toBeTruthy();
   });
-
-    // test('should change content when different station selected', async ({ page }) => {
-    //     await page.goto('/stations');
-    //     await page.waitForSelector('ul.list-disc li', { timeout: 10000 });
-        
-    //     const stations = page.locator('ul.list-disc li');
-    //     const count = await stations.count();
-        
-    //     if (count >= 2) {
-    //     // Получаем тексты первой и второй станции
-    //     const firstText = await stations.nth(0).textContent();
-    //     const secondText = await stations.nth(1).textContent();
-        
-    //     // Проверяем, что станции разные
-    //     expect(firstText).not.toBe(secondText);
-        
-    //     // Кликаем на первую станцию
-    //     await stations.nth(0).click();
-    //     await page.waitForTimeout(500);
-        
-    //     // Проверяем URL для первой станции
-    //     const firstId = firstText?.match(/^(\d+)/)?.[0];
-    //     if (firstId) {
-    //         await expect(page).toHaveURL(new RegExp(`.*/stations/${firstId}`));
-    //     }
-        
-    //     // Получаем содержимое Outlet после первого клика
-    //     const outlet = page.locator('hr + div');
-    //     const contentAfterFirst = await outlet.textContent();
-        
-    //     // Кликаем на вторую станцию
-    //     await stations.nth(1).click();
-    //     await page.waitForTimeout(500);
-        
-    //     // Проверяем URL для второй станции
-    //     const secondId = secondText?.match(/^(\d+)/)?.[0];
-    //     if (secondId) {
-    //         await expect(page).toHaveURL(new RegExp(`.*/stations/${secondId}`));
-    //     }
-        
-    //     // Получаем содержимое Outlet после второго клика
-    //     const contentAfterSecond = await outlet.textContent();
-        
-    //     // Проверяем, что содержимое изменилось
-    //     // Сравниваем, что в контенте появилось название второй станции
-    //     if (contentAfterFirst && contentAfterSecond) {
-    //         // Проверяем, что содержимое изменилось
-    //         expect(contentAfterSecond).not.toBe(contentAfterFirst);
-            
-    //         // Или проверяем, что содержимое содержит ID второй станции
-    //         if (secondId) {
-    //         expect(contentAfterSecond).toContain(secondId);
-    //         }
-    //     }
-    //     } else {
-    //     console.log('Skipping test: less than 2 stations available');
-    //     }
-    // });
 
   test('should show station details in Outlet after click', async ({ page }) => {
     await page.goto('/stations');
@@ -489,31 +405,6 @@ test.describe('API Error Recovery', () => {
     }
   });
 
-  // test('should handle navigation to specific station via URL', async ({ page }) => {
-  //   await page.goto('/stations');
-  //   await page.waitForSelector('ul.list-disc li', { timeout: 10000 });
-    
-  //   // Получаем ID первой станции
-  //   const firstStationText = await page.locator('ul.list-disc li').first().locator('div').textContent();
-  //   const stationId = firstStationText?.match(/^(\d+)/)?.[0];
-    
-  //   if (stationId) {
-  //     // Переходим напрямую к станции
-  //     await page.goto(`/stations/${stationId}`);
-  //     await page.waitForTimeout(1000);
-      
-  //     // Проверяем, что URL правильный
-  //     await expect(page).toHaveURL(new RegExp(`.*/stations/${stationId}`));
-      
-  //     // Проверяем, что Outlet содержит информацию о станции
-  //     const outlet = page.locator('hr + div');
-  //     await expect(outlet).toBeVisible();
-  //     const outletContent = await outlet.textContent();
-      
-  //     // Проверяем, что содержимое содержит ID станции
-  //     expect(outletContent).toContain(stationId);
-  //   }
-  // });
 });
 
   test.describe('Performance', () => {
@@ -546,32 +437,6 @@ test.describe('API Error Recovery', () => {
     });
   });
 
-//   test.describe('Responsive Design', () => {
-//     test('should display correctly on mobile viewport', async ({ page }) => {
-//       await page.setViewportSize({ width: 375, height: 812 });
-//       await page.goto('/stations');
-      
-//       // Проверяем, что контейнер адаптируется
-//       const container = page.locator('div.p-2.flex.gap-2').first();
-//       await expect(container).toBeVisible();
-      
-//       // Проверяем, что список не выходит за границы
-//       const list = page.locator('ul.list-disc');
-//       const boundingBox = await list.boundingBox();
-//       if (boundingBox) {
-//         expect(boundingBox.width).toBeLessThanOrEqual(375);
-//       }
-//     });
-
-//     test('should display correctly on desktop viewport', async ({ page }) => {
-//       await page.setViewportSize({ width: 1920, height: 1080 });
-//       await page.goto('/stations');
-      
-//       const container = page.locator('div.p-2.flex.gap-2').first();
-//       await expect(container).toBeVisible();
-//     });
-//   });
-
   test.describe('Accessibility', () => {
     test('should have proper list semantics', async ({ page }) => {
       await page.goto('/stations');
@@ -600,40 +465,6 @@ test.describe('API Error Recovery', () => {
     });
   });
 
-//   test.describe('Outlet Content', () => {
-//   test('should show Outlet with content', async ({ page }) => {
-//     await page.goto('/stations');
-    
-//     // Outlet находится после hr и имеет класс space-y-2
-//     const outlet = page.locator('hr + div.space-y-2');
-//     await expect(outlet).toBeVisible();
-    
-//     // Проверяем, что Outlet не пустой
-//     const content = await outlet.textContent();
-//     expect(content).toBeDefined();
-//   });
-
-//   test('should update Outlet content when station selected', async ({ page }) => {
-//     await page.goto('/stations');
-//     await page.waitForSelector('ul.list-disc li', { timeout: 10000 });
-    
-//     // Outlet - это div с классом space-y-2 после hr
-//     const outlet = page.locator('hr + div.space-y-2');
-//     const initialContent = await outlet.textContent();
-    
-//     // Кликаем на первую станцию
-//     await page.locator('ul.list-disc li').first().click();
-//     await page.waitForTimeout(1000);
-    
-//     // Проверяем, что контент изменился
-//     const newContent = await outlet.textContent();
-//     expect(newContent).not.toBe(initialContent);
-    
-//     // Проверяем, что в Outlet есть детали станции (не список всех станций)
-//     expect(newContent?.length).toBeLessThan(initialContent?.length || 0);
-//   });
-// });
-
   test.describe('Data Consistency', () => {
     test('should display station data matching API response', async ({ page }) => {
       const mockStations = [
@@ -654,120 +485,9 @@ test.describe('API Error Recovery', () => {
       
       const items = page.locator('ul.list-disc li div');
       const count = await items.count();
-      expect(count).toBe(19) //mockStations.length);
+      expect(count).toBe(19)
       
-      // for (let i = 0; i < mockStations.length; i++) {
-      //   const text = await items.nth(i).textContent();
-      //   expect(text).toContain(mockStations[i].sindex.toString());
-      //   expect(text).toContain(mockStations[i].station_name);
-      // }
     });
   });
 
-//   test.describe('Station Interactions', () => {
-//   test('should highlight selected station', async ({ page }) => {
-//     await page.goto('/stations');
-//     await page.waitForSelector('ul.list-disc li', { timeout: 10000 });
-    
-//     const firstStation = page.locator('ul.list-disc li').first();
-    
-//     // Проверяем, что станция кликабельна
-//     await expect(firstStation).toBeVisible();
-    
-//     // Сохраняем URL до клика
-//     const initialUrl = page.url();
-    
-//     // Кликаем на станцию
-//     await firstStation.click();
-//     await page.waitForTimeout(500);
-    
-//     // Проверяем, что произошла навигация (URL изменился)
-//     const currentUrl = page.url();
-//     expect(currentUrl).not.toBe(initialUrl);
-    
-//     // Проверяем, что URL содержит ID станции
-//     const stationText = await firstStation.locator('div').textContent();
-//     const stationId = stationText?.match(/^(\d+)/)?.[0];
-//     if (stationId) {
-//       expect(currentUrl).toContain(`/stations/${stationId}`);
-//     }
-//   });
-
-//   test('should handle click on any station', async ({ page }) => {
-//     await page.goto('/stations');
-//     await page.waitForSelector('ul.list-disc li', { timeout: 10000 });
-    
-//     const stations = page.locator('ul.list-disc li');
-//     const count = await stations.count();
-    
-//     // Проверяем клик на разных станциях
-//     for (let i = 0; i < Math.min(count, 3); i++) {
-//       const station = stations.nth(i);
-//       const stationText = await station.locator('div').textContent();
-//       const stationId = stationText?.match(/^(\d+)/)?.[0];
-      
-//       // Кликаем на станцию
-//       await station.click();
-//       await page.waitForTimeout(500);
-      
-//       // Проверяем, что URL обновился
-//       if (stationId) {
-//         await expect(page).toHaveURL(new RegExp(`.*/stations/${stationId}`));
-//       }
-      
-//       // Проверяем, что Outlet обновился
-//       const outlet = page.getByTestId('stations-outlet');
-//       await expect(outlet).toBeVisible();
-//       const outletContent = await outlet.textContent();
-//       expect(outletContent?.trim()).toBeTruthy();
-//     }
-//   });
-
-//   test('should navigate to correct station detail page', async ({ page }) => {
-//     await page.goto('/stations');
-//     await page.waitForSelector('ul.list-disc li', { timeout: 10000 });
-    
-//     // Получаем список всех станций
-//     const stations = page.locator('ul.list-disc li');
-//     const count = await stations.count();
-    
-//     // Проверяем первые 3 станции
-//     for (let i = 0; i < Math.min(count, 3); i++) {
-//       const station = stations.nth(i);
-//       const stationText = await station.locator('div').textContent();
-//       const stationId = stationText?.match(/^(\d+)/)?.[0];
-//       const stationName = stationText?.replace(/^\d+\s+/, '').trim();
-      
-//       // Кликаем на станцию
-//       await station.click();
-//       await page.waitForTimeout(500);
-      
-//       // Проверяем URL
-//       if (stationId) {
-//         await expect(page).toHaveURL(new RegExp(`.*/stations/${stationId}`));
-//       }
-      
-//       // Проверяем Outlet
-//       const outlet = page.getByTestId('stations-outlet');
-//       await expect(outlet).toBeVisible();
-//       const outletContent = await outlet.textContent();
-      
-//       // Проверяем, что в Outlet есть ID станции
-//       if (stationId) {
-//         expect(outletContent).toContain(stationId);
-//       }
-      
-//       // Проверяем, что в Outlet есть название станции (или его часть)
-//       if (stationName) {
-//         const nameParts = stationName.split(' ');
-//         for (const part of nameParts) {
-//           if (part.length > 3) {
-//             expect(outletContent?.toLowerCase()).toContain(part.toLowerCase());
-//             break;
-//           }
-//         }
-//       }
-//     }
-//   });
-// });
 });
