@@ -59,7 +59,6 @@ import forecastRoute from './forecastWeatherApi'
 import { useSearch } from '@tanstack/react-router'
 
 export function ForecastPage() {
-  // const search = forecastRoute.useSearch();
   const search = useSearch({ from: '/forecastWeatherApi/' }) as ForecastSearch;
   const iDay = search.i_day || 0;
 
