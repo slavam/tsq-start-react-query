@@ -38,9 +38,9 @@ function RouteComponent() {
     }
     )
   return (
-    <div className="p-2 flex gap-2 ">
+    <div className="p-2 flex gap-2" data-testid="current-weather-container">
       <h1>Текущая погода по состоянию на {new Date().toLocaleString("ru")} </h1>
-      <hr />
+      <hr data-testid="hr-before" />
       <div className='font-bold text-lg'>
         <ul className="list-disc pl-4" >
           <li key='1' className="whitespace-nowrap">
@@ -57,8 +57,10 @@ function RouteComponent() {
           </li>
         </ul>
       </div>
-      <hr />
-      <Outlet />
+      <hr data-testid="hr-after" />
+      <div data-testid="outlet-container">
+        <Outlet />
+      </div>
     </div>
   )
 }
