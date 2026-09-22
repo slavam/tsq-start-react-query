@@ -1,5 +1,5 @@
 import { queryOptions } from '@tanstack/react-query'
-import axios from 'redaxios'
+import axios from 'axios'
 
 export type Station = {
   sindex: number,

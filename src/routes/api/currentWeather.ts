@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { json } from '@tanstack/react-start'
-import axios from 'redaxios'
+import axios from 'axios'
 import { CurrentWeather, observedAt } from '../../utils/currentWeather'
 
 export const Route = createFileRoute('/api/currentWeather')({

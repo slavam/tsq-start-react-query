@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import axios from 'redaxios'
+import axios from 'axios'
 import type { Station } from '../../utils/stations'
 
 export const Route = createFileRoute('/api/stations')({
@@ -9,6 +9,7 @@ export const Route = createFileRoute('/api/stations')({
         try {
           const res = await axios.get<Station[]>(
             process.env.STATIONS_URL+'',
+            { timeout: 5000 }
           )
           return Response.json(
             res.data.map((s) => ({ sindex: s.sindex, station_name: s.station_name })),
