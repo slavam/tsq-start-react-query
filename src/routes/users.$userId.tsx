@@ -15,7 +15,7 @@ export const Route = createFileRoute('/users/$userId')({
   },
 })
 
-export function UserErrorComponent({ error }: ErrorComponentProps) {
+function UserErrorComponent({ error }: ErrorComponentProps) {
   return <ErrorComponent error={error} />
 }
 

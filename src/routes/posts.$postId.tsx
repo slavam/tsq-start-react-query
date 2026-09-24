@@ -24,7 +24,7 @@ export const Route = createFileRoute('/posts/$postId')({
   component: PostComponent,
 })
 
-export function PostErrorComponent({ error }: ErrorComponentProps) {
+function PostErrorComponent({ error }: ErrorComponentProps) {
   return <ErrorComponent error={error} />
 }
 

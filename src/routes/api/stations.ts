@@ -7,6 +7,7 @@ export const Route = createFileRoute('/api/stations')({
     handlers: {
       GET: async ({ request }) => {
         try {
+          console.info('Fetching stations... @', request.url)
           const res = await axios.get<Station[]>(
             process.env.STATIONS_URL+'',
             { timeout: 5000 }
